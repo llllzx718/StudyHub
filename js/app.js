@@ -1,31 +1,64 @@
+    let tasks = [];
 
-        const taskInput = document.getElementById("taskInput");
-        const addTaskBtn = document.getElementById("addTaskBtn");
-        const taskList = document.getElementById("taskList");
+    function saveTasks(){
+        localStorage.setItem("tasks",JSON.stringify(tasks));
+    }
+    function renderTask(task,index){
+        const li = document.createElement("li");
+        const taskSpan = document.createElement("span");
+        taskSpan.textContent = task.text;
 
-        addTaskBtn.addEventListener("click", function () {
-            const taskText = taskInput.value;
+        if(task.done){
+            taskSpan.style.textDecoration = "line-through";
+        }
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "删除";
+
+        taskSpan.addEventListener("click", function () {
+            task.done = !task.done;
+            saveTasks();
+            renderTasks();
+        });
+
+        deleteBtn.addEventListener("click", function () {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        });
+
+        li.appendChild(taskSpan);
+        li.appendChild(deleteBtn);
+
+        taskList.appendChild(li);
+    }
+    function renderTasks(){
+        taskList.innerHTML = "";
+
+        tasks.forEach(function(task,index){
+            renderTask(task,index);
+        });
+    }
+        
+    
+    addTaskBtn.addEventListener("click", function () {
+            const taskText = taskInput.value.trim();
             if (taskText === "") {
                 return;
             }
-            const li = document.createElement("li");
-            const taskSpan = document.createElement("span");
-            taskSpan.textContent = taskText;
 
-            const deleteBtn = document.createElement("button");
-            deleteBtn.textContent = "删除";
+            const task = {
+                text: taskText,
+                done: false
+            };
 
-            taskSpan.addEventListener("click", function () {
-                taskSpan.style.textDecoration = "line-through";
-            });
-            deleteBtn.addEventListener("click", function () {
-                li.remove();
-            });
-
-            li.appendChild(taskSpan);
-            li.appendChild(deleteBtn);
-
-            taskList.appendChild(li);
+            tasks.push(task);
+            saveTasks();
+            renderTasks();
 
             taskInput.value = "";
         });
+        loadTasks();
+        renderTasks();
+           
+
