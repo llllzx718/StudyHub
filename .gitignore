@@ -1,0 +1,14 @@
+# IDEA
+.idea/
+*.iml
+
+# Maven
+**/target/
+
+# 本地数据库配置（包含密码）
+backend/src/main/resources/application-local.properties
+
+# 环境变量和日志
+.env
+*.env
+*.log

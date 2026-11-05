@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>注册 - StudyHub</title>
+
+    <link rel="stylesheet" href="./css/auth.css">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="brand">
+            <h1>StudyHub</h1>
+            <p>创建你的学习空间</p>
+        </div>
+
+        <h2>创建账号</h2>
+
+        <form id="registerForm">
+
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input
+                        id="username"
+                        type="text"
+                        placeholder="请输入用户名"
+                        maxlength="50"
+                        autocomplete="username"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input
+                        id="password"
+                        type="password"
+                        placeholder="至少 8 位"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                >
+            </div>
+
+            <p id="message" class="message"></p>
+
+            <button type="submit" class="primary-button">
+                注册
+            </button>
+
+        </form>
+
+        <div class="switch-page">
+            已经有账号？
+            <a href="./login.html">返回登录</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="./js/auth.js"></script>
+
+</body>
+</html>

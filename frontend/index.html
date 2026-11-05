@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyHub</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- 左侧导航栏 -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                StudyHub
+            </div>
+
+            <nav class="nav">
+
+                <a class="nav-item active" href="#">
+                    <span>🏠</span>
+                    首页
+                </a>
+
+                <a class="nav-item" href="#tasks">
+                    <span>✅</span>
+                    任务
+                </a>
+
+                <a class="nav-item disabled" href="#">
+                    <span>📚</span>
+                    学习
+                </a>
+
+                <a class="nav-item disabled" href="#">
+                    <span>📊</span>
+                    统计
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- 右侧主体 -->
+        <main class="main">
+
+            <!-- 顶部栏 -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>管理你的学习与任务</p>
+                </div>
+
+                <div class="user-area">
+
+                    <span id="userStatus">
+                        加载中...
+                    </span>
+
+                    <button id="logoutBtn" class="logout-button">
+                        退出登录
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- 数据卡片 -->
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        全部任务
+                    </div>
+
+                    <div id="totalCount" class="stat-number">
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        待完成
+                    </div>
+
+                    <div id="pendingCount" class="stat-number">
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        已完成
+                    </div>
+
+                    <div id="completedCount" class="stat-number">
+                        0
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 任务区域 -->
+            <section id="tasks" class="task-section">
+
+                <div class="section-header">
+
+
+                    <div>
+                        <h2>我的任务</h2>
+                        <p>记录今天需要完成的事情</p>
+                    </div>
+                    <select id="priorityFilter">
+                        <option value="ALL">全部优先级</option>
+                        <option value="HIGH">高优先级</option>
+                        <option value="MEDIUM">中优先级</option>
+                        <option value="LOW">低优先级</option>
+                    </select>
+
+                </div>
+
+
+                <!-- 新增任务 -->
+                <div class="task-input-area">
+                    <input id="taskInput" type="text" placeholder="输入一个新任务..." maxlength="100">
+
+                    <select id="priorityInput">
+                        <option value="LOW">低优先级</option>
+                        <option value="MEDIUM" selected>中优先级</option>
+                        <option value="HIGH">高优先级</option>
+                    </select>
+
+                    <input id="deadlineInput" type="date">
+
+                    <button id="addTaskBtn">+ 添加任务</button>
+                </div>
+
+
+                <!-- 任务列表 -->
+                <div id="taskList" class="task-list"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+    <dialog id="editTaskDialog" class="edit-dialog">
+        <form id="editTaskForm">
+            <h2>编辑任务</h2>
+
+            <label for="editTaskText">任务内容</label>
+            <input id="editTaskText" type="text" maxlength="100" required>
+
+            <label for="editTaskPriority">优先级</label>
+            <select id="editTaskPriority">
+                <option value="LOW">低优先级</option>
+                <option value="MEDIUM">中优先级</option>
+                <option value="HIGH">高优先级</option>
+            </select>
+
+            <div class="dialog-actions">
+                <button type="button" id="cancelEditBtn">
+                    取消
+                </button>
+
+                <button type="submit" id="saveEditBtn">
+                    保存修改
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>
