@@ -80,7 +80,9 @@ public class TaskService {
             newPriority = request.priority();
         }
 
-        if (request.deadline() != null) {
+        if (Boolean.TRUE.equals(request.clearDeadline())) {
+            newDeadline = null;
+        }else if(request.deadline() != null){
             newDeadline = request.deadline();
         }
 

@@ -8,6 +8,7 @@ public record UpdateTaskRequest(
         String text,
         Boolean done,
         TaskPriority priority,
-        LocalDate deadline
+        LocalDate deadline,
+        Boolean clearDeadline
 ) {
 }
